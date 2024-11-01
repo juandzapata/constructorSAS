@@ -40,4 +40,8 @@ public class Orden {
     public void setFechaFinalizacion(LocalDate fechaFinalizacion) {
         this.fechaFinalizacion = fechaFinalizacion;
     }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
 }

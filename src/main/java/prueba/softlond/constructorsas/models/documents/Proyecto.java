@@ -3,6 +3,7 @@ package prueba.softlond.constructorsas.models.documents;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,6 +16,7 @@ public class Proyecto {
     private String nombre;
     private List<Material> recursos;
     private List<Orden> ordenes;
+    private LocalDate fechaTerminacion;
 
     public Proyecto() {
         this.ordenes = new ArrayList<>();
@@ -23,6 +25,15 @@ public class Proyecto {
         this.nombre = nombre;
         this.recursos = recursos;
         this.ordenes = new ArrayList<>();
+        this.fechaTerminacion = LocalDate.now();
+    }
+
+    public LocalDate getFechaTerminacion() {
+        return fechaTerminacion;
+    }
+
+    public void setFechaTerminacion(LocalDate fechaTerminacion) {
+        this.fechaTerminacion = fechaTerminacion;
     }
 
     public void iniciarMateriales(int ce, int gr, int ar, int ma, int ad){

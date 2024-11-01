@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import prueba.softlond.constructorsas.models.documents.*;
 import prueba.softlond.constructorsas.models.repository.ConstruccionRepository;
 import prueba.softlond.constructorsas.models.repository.ProyectoRepository;
@@ -15,7 +15,7 @@ import reactor.core.publisher.Flux;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
+@EnableScheduling
 @SpringBootApplication
 public class ConstructorSasApplication implements CommandLineRunner {
     @Autowired
