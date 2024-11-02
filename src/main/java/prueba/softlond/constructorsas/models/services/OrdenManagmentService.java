@@ -25,7 +25,7 @@ public class OrdenManagmentService  {
     @Autowired
     private ProyectoRepository proyectoRepository;
 
-    @Scheduled(cron = "0 42 0 * * ?")
+    @Scheduled(cron = "0 23 10 * * ?")
     public void actualizarOrdenesPorLaMorning() {
         log.info("Actualizando ordenes por la Morning");
         ordenRepository.findByEstado(Estado.PROGRESO)
@@ -36,7 +36,7 @@ public class OrdenManagmentService  {
                 .subscribe();
     }
 
-    @Scheduled(cron = "30 42 0 * * ?")
+    @Scheduled(cron = "30 23 10 * * ?")
     public void actualizarOrdenesPorLaNoche() {
         log.info("Actualizando ordenes por noche");
         ordenRepository.findByEstado(Estado.PROGRESO)

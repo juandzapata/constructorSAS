@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Informe de Construcciones</title>
+</head>
+<body>
+<h1>Informe de Construcciones</h1>
+
+<h2>Construcciones Pendientes</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Tipo de Construcción</th>
+        <th>Cantidad</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="entry : ${pendientes}">
+        <td th:text="${entry.key}"></td>
+        <td th:text="${entry.value}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Construcciones en Progreso</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Tipo de Construcción</th>
+        <th>Cantidad</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="entry : ${enProgreso}">
+        <td th:text="${entry.key}"></td>
+        <td th:text="${entry.value}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Construcciones Terminadas</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Tipo de Construcción</th>
+        <th>Cantidad</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="entry : ${terminadas}">
+        <td th:text="${entry.key}"></td>
+        <td th:text="${entry.value}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

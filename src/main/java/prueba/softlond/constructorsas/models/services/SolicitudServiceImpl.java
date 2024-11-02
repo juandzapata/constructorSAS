@@ -8,6 +8,8 @@ import prueba.softlond.constructorsas.models.documents.*;
 import prueba.softlond.constructorsas.models.repository.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 
@@ -29,10 +31,15 @@ public class SolicitudServiceImpl implements SolicitudService {
     @Autowired
     private ProyectoRepository proyectoRepository;
 
+    private static final Logger log = LoggerFactory.getLogger(SolicitudServiceImpl.class);
+
     public Mono<Solicitud> crearSolicitud(SolicitudDTO solicitudDTO) {
         return verificarCoordenadas(solicitudDTO)
                 .flatMap(coordenada -> buscarConstruccionYCrearSolicitud(solicitudDTO, coordenada))
-                .flatMap(solicitud -> crearOrdenYAsociarAProyecto(solicitud, solicitudDTO.getProyectoId()));
+                .flatMap(solicitud -> {
+                    log.info("Creando una orden para la solicitud con ID: {}", solicitud.getId());
+                    return crearOrdenYAsociarAProyecto(solicitud, solicitudDTO.getProyectoId());
+                });
     }
 
     private Mono<Coordenada> verificarCoordenadas(SolicitudDTO solicitudDTO) {
